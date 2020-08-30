@@ -27,23 +27,12 @@ for (let i = 0; i < 2; i++) {
     let lastFilm = prompt('Один из последних просмотренных фильмов?', '');
     let scoreFilm = +prompt('На сколько оцените его?', '');
 
-    if (lastFilm == '') {
+    if (lastFilm != '' &&  lastFilm != null && lastFilm.length <= 50) {
+        personalMovieDB.movies[lastFilm] = scoreFilm;
+    } else {
         --i;
         continue;
     }
-
-    if (lastFilm == null) {
-        --i;
-        continue;
-    }
-
-    if (lastFilm.length > 50)  {
-        --i;
-        continue;
-    }
-
-    personalMovieDB.movies[lastFilm] = scoreFilm;
-
 }
 
 console.log(personalMovieDB);
